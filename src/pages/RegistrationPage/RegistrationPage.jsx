@@ -7,15 +7,25 @@ import Button from "../../components/Button/Button";
 
 const RegistrationPage = () => {
   const [userName, setUserName] = useState("");
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
+  const handleSubmitClick = (e) => {
     e.preventDefault();
 
     if (userName.trim() !== "") {
+      setError(false);
       dispatch(updateUser({ name: userName, toDoList: [] }));
       navigate("/toDoList", { replace: true });
+    } else {
+      setError(true);
+    }
+  };
+
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmitClick(e);
     }
   };
 
@@ -37,10 +47,14 @@ const RegistrationPage = () => {
             type="text"
             value={userName}
             onChange={handleChange}
+            onKeyDown={handleEnterPress}
           />
+          {error && (
+            <div className={style.error}>This field can't be empty</div>
+          )}
         </form>
         <div className={style.button}>
-          <Button className={style.button} handleClick={handleClick}>
+          <Button className={style.button} handleClick={handleSubmitClick}>
             Save
           </Button>
         </div>

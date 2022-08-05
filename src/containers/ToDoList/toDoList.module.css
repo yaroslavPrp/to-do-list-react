@@ -13,8 +13,8 @@
   position: relative;
 }
 
-.toDoSelectionContainer::before{
-  content: '';
+.toDoSelectionContainer::before {
+  content: "";
   position: absolute;
   width: 4px;
   height: 30px;

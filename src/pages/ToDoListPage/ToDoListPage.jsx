@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/actions";
 
 const ToDoListPage = () => {
-  const [toDoInputValue, setToDoInputValue] = useState("");
   const user = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [toDoInputValue, setToDoInputValue] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("active");
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setToDoInputValue(e.target.value);
@@ -27,8 +28,10 @@ const ToDoListPage = () => {
 
       dispatch(updateUser({ ...user, toDoList: [...user.toDoList, newTodo] }));
       setToDoInputValue("");
-
       setSelectedStatus("active");
+      setError(false);
+    } else {
+      setError(true);
     }
   };
 
@@ -57,6 +60,7 @@ const ToDoListPage = () => {
                 Add Todo
               </button>
             </div>
+            {error && <div className={style.error}>Todo can't be empty</div>}
           </form>
           <ToDoList
             selectedStatus={selectedStatus}

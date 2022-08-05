@@ -46,7 +46,6 @@ const ToDoItem = ({ todoInfo: currentTodo }) => {
   };
 
   const handleCompletionClick = () => {
-    console.log(user);
     const completionChanged = user.toDoList.map((todo) => {
       if (todo.id === currentTodo.id) {
         todo.completed = !todo.completed;
