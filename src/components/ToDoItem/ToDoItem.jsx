@@ -40,12 +40,12 @@ const ToDoItem = ({ currentTodo }) => {
         <DoneSVG
           className={`${style.svgIcon}`}
           onClick={handleCompletionClick}
-        ></DoneSVG>
+        />
       ) : (
         <CircleSVG
           className={`${style.svgIcon}`}
           onClick={handleCompletionClick}
-        ></CircleSVG>
+        />
       )}
       <textarea
         className={
@@ -62,14 +62,14 @@ const ToDoItem = ({ currentTodo }) => {
         <EditSVG
           className={`${style.svgIcon} ${style.edit}`}
           onClick={handleEditClick}
-        ></EditSVG>
+        />
       ) : (
-        <OkSVG className={`${style.svgIcon} ${style.edit}`}></OkSVG>
+        <OkSVG className={`${style.svgIcon} ${style.edit}`} />
       )}
       <DeleteSVG
         className={`${style.svgIcon} ${style.delete}`}
         onClick={handleDeleteClick}
-      ></DeleteSVG>
+      />
     </div>
   );
 };

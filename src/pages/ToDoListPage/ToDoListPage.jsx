@@ -52,11 +52,7 @@ const ToDoListPage = () => {
                 onChange={handleChange}
                 placeholder="type in new todo item"
               />
-              <button
-                className={style.button}
-                onClick={handleToDoSubmit}
-                type="submit"
-              >
+              <button className={style.button} type="submit">
                 Add Todo
               </button>
             </div>

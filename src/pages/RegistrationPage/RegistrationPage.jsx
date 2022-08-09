@@ -50,9 +50,7 @@ const RegistrationPage = () => {
           )}
         </form>
         <div className={style.button}>
-          <Button className={style.button} handleClick={handleSubmitClick}>
-            Save
-          </Button>
+          <Button text={"Save"} handleClick={handleSubmitClick} />
         </div>
       </div>
     </div>

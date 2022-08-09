@@ -1,6 +1,8 @@
+import { types } from "./types";
+
 export const setUser = (name) => {
   return {
-    type: "SET_USER",
+    type: types.setUser,
     payload: {
       name: name,
     },
@@ -9,7 +11,7 @@ export const setUser = (name) => {
 
 export const addTodo = (todo) => {
   return {
-    type: "ADD_TODO",
+    type: types.addTodo,
     payload: {
       todo: todo,
     },
@@ -18,7 +20,7 @@ export const addTodo = (todo) => {
 
 export const removeTodo = (id) => {
   return {
-    type: "REMOVE_TODO",
+    type: types.removeTodo,
     payload: {
       id: id,
     },
@@ -27,7 +29,7 @@ export const removeTodo = (id) => {
 
 export const updateTodo = (value, id) => {
   return {
-    type: "UPDATE_TODO",
+    type: types.updateTodo,
     payload: {
       newValue: value,
       id: id,
@@ -37,7 +39,7 @@ export const updateTodo = (value, id) => {
 
 export const toggleCompletion = (id) => {
   return {
-    type: "TOGGLE_COMPLETION",
+    type: types.toggleCompletion,
     payload: {
       id: id,
     },

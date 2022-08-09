@@ -1,21 +1,23 @@
-const reducer = (state = {}, action) => {
+import { types } from "./types";
+
+const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_USER": {
-      return { name: action.payload.name, toDoList: [] };
+    case types.setUser: {
+      return { ...state, name: action.payload.name };
     }
 
-    case "ADD_TODO": {
+    case types.addTodo: {
       return { ...state, toDoList: [...state.toDoList, action.payload.todo] };
     }
 
-    case "REMOVE_TODO": {
+    case types.removeTodo: {
       const newToDoList = state.toDoList.filter(
         (todo) => todo.id !== action.payload.id
       );
       return { ...state, toDoList: newToDoList };
     }
 
-    case "UPDATE_TODO": {
+    case types.updateTodo: {
       const newToDoList = state.toDoList.map((todo) => {
         if (todo.id === action.payload.id) {
           todo.todo = action.payload.newValue;
@@ -25,7 +27,7 @@ const reducer = (state = {}, action) => {
       return { ...state, toDoList: newToDoList };
     }
 
-    case "TOGGLE_COMPLETION": {
+    case types.toggleCompletion: {
       const newToDoList = state.toDoList.map((todo) => {
         if (todo.id === action.payload.id) {
           todo.completed = !todo.completed;

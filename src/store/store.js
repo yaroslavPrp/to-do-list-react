@@ -1,10 +1,9 @@
 import { createStore } from "redux";
 import reducer from "./reducer";
 
-const preloadedState = {};
+const preloadedState = { name: "", toDoList: [] };
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : (f) => f;
+const devTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 export const store = createStore(reducer, preloadedState, devTools);
