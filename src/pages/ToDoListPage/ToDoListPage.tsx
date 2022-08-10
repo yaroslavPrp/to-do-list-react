@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import ToDoList from "../../containers/ToDoList/ToDoList";
+import { RootState } from "../../store/store";
+import { SelectedStatus } from "../../types/selectedStatusEnum";
 import style from "./toDoListPage.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../../store/actions";
 
-const ToDoListPage = () => {
-  const user = useSelector((state) => state);
+const ToDoListPage: FC = () => {
+  const user = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   const [toDoInputValue, setToDoInputValue] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("active");
+  const [selectedStatus, setSelectedStatus] = useState(SelectedStatus.ACTIVE);
   const [error, setError] = useState(false);
 
-  const handleChange = (e) => {
-    setToDoInputValue(e.target.value);
-  };
-
-  const handleToDoSubmit = (e) => {
+  const handleToDoSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     if (toDoInputValue.trim()) {
@@ -28,7 +26,7 @@ const ToDoListPage = () => {
 
       dispatch(addTodo(newTodo));
       setToDoInputValue("");
-      setSelectedStatus("active");
+      setSelectedStatus(SelectedStatus.ACTIVE);
       setError(false);
     } else {
       setError(true);
@@ -49,7 +47,7 @@ const ToDoListPage = () => {
                 className={style.input}
                 type="text"
                 value={toDoInputValue}
-                onChange={handleChange}
+                onChange={(e) => setToDoInputValue(e.target.value)}
                 placeholder="type in new todo item"
               />
               <button className={style.button} type="submit">
